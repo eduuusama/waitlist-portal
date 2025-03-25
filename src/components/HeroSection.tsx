@@ -1,6 +1,6 @@
-
 import React from 'react';
 import WaitlistForm from './WaitlistForm';
+import PartnerLogos from './PartnerLogos';
 
 interface HeroSectionProps {
   onJoinWaitlist: (email: string) => void;
@@ -9,18 +9,7 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
   return (
     <section className="py-20 px-4 max-w-4xl mx-auto flex flex-col items-center">
-      {/* Rectangular image area for logos - smaller and higher up */}
-      <div className="mb-12 w-full max-w-xs mx-auto">
-        <div className="aspect-[3/1] bg-gray-100 rounded-lg flex items-center justify-center">
-          <span className="text-xs text-muted-foreground">Partner Logos</span>
-        </div>
-      </div>
-      
       <div className="text-center space-y-6 mb-10">
-        <div className="inline-block glass-dark px-4 py-1.5 rounded-full text-xs font-medium text-muted-foreground animate-fade-in">
-          Coming soon
-        </div>
-        
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance animate-fade-in" style={{ animationDelay: '100ms' }}>
           Automate Everyday Shopify Tasks in One-Click
         </h1>
@@ -29,8 +18,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
           Join our exclusive waitlist to be among the first to experience AI for Shopify Automations.
         </p>
       </div>
-      
+
       <WaitlistForm onSuccess={onJoinWaitlist} />
+
+      <div className="mt-10 w-full animate-fade-in" style={{ animationDelay: '300ms' }}>
+        <PartnerLogos />
+      </div>
     </section>
   );
 };

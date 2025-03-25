@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
+import { supabase } from "@/integrations/supabase/client";
 
 interface WaitlistFormProps {
   onSuccess: (email: string) => void;
@@ -26,11 +27,33 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
     
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Insert the email into the Supabase table
+      const { error } = await supabase
+        .from('emails')
+        .insert([{ email: email.trim() }]);
+      
+      if (error) {
+        if (error.code === '23505') {
+          // This is the PostgreSQL error code for unique constraint violation
+          toast.error('This email is already on our waitlist!');
+        } else {
+          console.error('Error submitting email:', error);
+          toast.error('Failed to join waitlist. Please try again.');
+        }
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Success
       onSuccess(email);
-    }, 1500);
+      setEmail('');
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      toast.error('Failed to join waitlist. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

@@ -31,7 +31,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
       // Insert the email into the Supabase table
       const { error } = await supabase
         .from('emails')
-        .insert([{ email: email.trim() }]);
+        .insert({ email: email.trim() });
       
       if (error) {
         if (error.code === '23505') {

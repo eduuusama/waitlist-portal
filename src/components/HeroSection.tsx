@@ -15,7 +15,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
         </div>
         
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance animate-fade-in" style={{ animationDelay: '100ms' }}>
-          The future is waiting to be discovered
+          Automate Everyday Shopify Tasks in One-Click
         </h1>
         
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance animate-fade-in" style={{ animationDelay: '200ms' }}>

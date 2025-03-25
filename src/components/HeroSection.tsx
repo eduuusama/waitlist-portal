@@ -19,7 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
         </h1>
         
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance animate-fade-in" style={{ animationDelay: '200ms' }}>
-          Join our exclusive waitlist to be among the first to experience our revolutionary product.
+          Join our exclusive waitlist to be among the first to experience AI for Shopify Automations.
         </p>
       </div>
       

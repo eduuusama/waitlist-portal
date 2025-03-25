@@ -10,6 +10,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
   return (
     <section className="py-20 px-4 max-w-4xl mx-auto flex flex-col items-center">
       <div className="text-center space-y-6 mb-10">
+        {/* Rectangular image area for logos */}
+        <div className="mb-8 w-full max-w-md mx-auto">
+          <div className="aspect-[3/1] bg-gray-100 rounded-lg flex items-center justify-center">
+            <span className="text-sm text-muted-foreground">Partner Logos</span>
+          </div>
+        </div>
+        
         <div className="inline-block glass-dark px-4 py-1.5 rounded-full text-xs font-medium text-muted-foreground animate-fade-in">
           Coming soon
         </div>

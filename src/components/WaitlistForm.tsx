@@ -79,7 +79,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
         />
         <input
           type="url"
-          placeholder="Your Shopify store URL (optional) e.g. www.sampleshop.com"
+          placeholder="www.samplestore.com (optional)"
           value={shopifyUrl}
           onChange={(e) => setShopifyUrl(e.target.value)}
           className="w-full bg-transparent border-0 focus:ring-0 text-foreground px-4 py-3 placeholder:text-muted-foreground rounded-full"

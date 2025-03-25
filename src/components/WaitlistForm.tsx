@@ -68,13 +68,13 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto animate-fade-in-delay">
-      <div className="glass flex flex-col gap-2 p-2 rounded-2xl">
+      <div className="glass flex flex-col gap-3 p-3">
         <input
           type="email"
           placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full bg-transparent border-0 focus:ring-0 text-foreground px-4 py-3 placeholder:text-muted-foreground rounded-full"
+          className="w-full bg-white/90 dark:bg-white/10 border border-gray-200 dark:border-white/10 focus:border-[#8C74FF] focus:ring-1 focus:ring-[#8C74FF] text-foreground px-4 py-3 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg shadow-sm transition-colors"
           disabled={isSubmitting}
         />
         <input
@@ -82,13 +82,13 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
           placeholder="www.samplestore.com (optional)"
           value={shopifyUrl}
           onChange={(e) => setShopifyUrl(e.target.value)}
-          className="w-full bg-transparent border-0 focus:ring-0 text-foreground px-4 py-3 placeholder:text-muted-foreground rounded-full"
+          className="w-full bg-white/90 dark:bg-white/10 border border-gray-200 dark:border-white/10 focus:border-[#8C74FF] focus:ring-1 focus:ring-[#8C74FF] text-foreground px-4 py-3 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg shadow-sm transition-colors"
           disabled={isSubmitting}
         />
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full flex items-center justify-center rounded-full bg-foreground text-background h-12 transition-all duration-300 hover:bg-gray-800"
+          className="w-full flex items-center justify-center rounded-lg bg-[#8C74FF] text-white h-12 transition-all duration-300 hover:bg-[#7B61FF] shadow-sm"
         >
           {isSubmitting ? (
             <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin" />

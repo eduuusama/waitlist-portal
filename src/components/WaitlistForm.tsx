@@ -25,12 +25,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
       return;
     }
 
-    // Validate Shopify URL if provided
-    if (shopifyUrl.trim() && !/^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/.test(shopifyUrl.trim())) {
-      toast.error('Please enter a valid URL');
-      return;
-    }
-    
+    // Remove URL validation - accept any text
     setIsSubmitting(true);
     
     try {
@@ -78,7 +73,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
           disabled={isSubmitting}
         />
         <input
-          type="url"
+          type="text"
           placeholder="www.samplestore.com (optional)"
           value={shopifyUrl}
           onChange={(e) => setShopifyUrl(e.target.value)}

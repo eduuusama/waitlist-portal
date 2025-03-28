@@ -74,7 +74,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({ onSuccess }) => {
         />
         <input
           type="text"
-          placeholder="www.samplestore.com (optional)"
+          placeholder="(optional) www.samplestore.com"
           value={shopifyUrl}
           onChange={(e) => setShopifyUrl(e.target.value)}
           className="w-full bg-white/90 dark:bg-white/10 border border-gray-200 dark:border-white/10 focus:border-[#8C74FF] focus:ring-1 focus:ring-[#8C74FF] text-foreground px-4 py-3 placeholder:text-gray-500 dark:placeholder:text-gray-400 rounded-lg shadow-sm transition-colors"

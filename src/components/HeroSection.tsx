@@ -15,14 +15,17 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
 
       <div className="text-center space-y-6 my-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance animate-fade-in" style={{ animationDelay: '200ms' }}>
-          Automate Everyday Shopify Tasks with AI
+          Apply for the best AI in Shopify
         </h1>
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-balance animate-fade-in text-muted-foreground" style={{ animationDelay: '250ms' }}>
+          You are missing out on Revenue
+        </h2>
       </div>
 
       <WaitlistForm onSuccess={onJoinWaitlist} />
       
       <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance text-center mt-6 animate-fade-in" style={{ animationDelay: '300ms' }}>
-        Join our exclusive waitlist to be among the first to experience AI for Shopify Automations.
+        Be first to unlock AI-powered Shopify success.
       </p>
     </section>
   );

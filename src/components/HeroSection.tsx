@@ -1,3 +1,4 @@
+
 import React from 'react';
 import WaitlistForm from './WaitlistForm';
 import PartnerLogos from './PartnerLogos';
@@ -15,7 +16,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
 
       <div className="text-center space-y-6 my-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance animate-fade-in" style={{ animationDelay: '200ms' }}>
-          Apply for the best AI in Shopify
+          Join the Shopify AI community.
         </h1>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-balance animate-fade-in text-muted-foreground" style={{ animationDelay: '250ms' }}>
           You are missing out on Revenue

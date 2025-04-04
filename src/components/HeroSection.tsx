@@ -21,6 +21,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-balance animate-fade-in text-muted-foreground" style={{ animationDelay: '250ms' }}>
           You are missing out on Revenue
         </h2>
+        <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto text-balance animate-fade-in" style={{ animationDelay: '300ms' }}>
+          Get 3 ways to increase sales with our Free Audit.
+        </p>
       </div>
 
       <WaitlistForm onSuccess={onJoinWaitlist} />

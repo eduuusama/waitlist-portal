@@ -19,7 +19,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
           Join the Shopify AI community.
         </h1>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-balance animate-fade-in text-muted-foreground" style={{ animationDelay: '250ms' }}>
-          You are missing out on Revenue
+          You are most likely missing out on Revenue
         </h2>
         <p className="text-xl text-foreground max-w-2xl mx-auto text-balance animate-fade-in" style={{ animationDelay: '300ms' }}>
           Receive 3 ways to increase sales with our Free Audit.

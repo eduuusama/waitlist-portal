@@ -27,10 +27,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
       </div>
 
       <WaitlistForm onSuccess={onJoinWaitlist} />
-      
-      <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance text-center mt-6 animate-fade-in" style={{ animationDelay: '300ms' }}>
-        Be first to unlock AI-powered Shopify success.
-      </p>
     </section>
   );
 };

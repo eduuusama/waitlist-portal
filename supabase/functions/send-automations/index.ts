@@ -65,7 +65,7 @@ serve(async (req) => {
       to: email,
       subject: '🚀 Your 10 Powerful Shopify Automations',
       html: `
-        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+        <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
           <h2 style="color: #8C74FF; margin-bottom: 20px;">Your Shopify Automations Guide</h2>
           
           <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">

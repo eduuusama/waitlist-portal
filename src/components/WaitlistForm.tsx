@@ -3,8 +3,6 @@ import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { cn } from '../lib/utils';
-import { supabase } from '../integrations/supabase/client';
-import { toast } from './ui/use-toast';
 
 interface WaitlistFormProps {
   onSuccess: (email: string) => void;
@@ -16,7 +14,6 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
   buttonText = "Join Waitlist" 
 }) => {
   const [email, setEmail] = useState('');
-  const [shopifyUrl, setShopifyUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,40 +29,11 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
     setError(null);
     setIsLoading(true);
     
-    try {
-      // Save the email to Supabase using the 10automations table
-      const { error: supabaseError } = await supabase
-        .from('10automations')
-        .insert([{ 
-          email, 
-          shopify_url: shopifyUrl || null,
-          document_sent: false
-        }]);
-
-      if (supabaseError) {
-        // If it's a unique violation, that means the email already exists
-        if (supabaseError.code === '23505') {
-          // This is okay - they're just submitting again
-          console.log('Email already exists, continuing with success flow');
-        } else {
-          throw supabaseError;
-        }
-      }
-
-      // Show success toast
-      toast({
-        title: "Success!",
-        description: "Your automations are on the way to your inbox!",
-      });
-
-      // Call the success handler
-      onSuccess(email);
-    } catch (err) {
-      console.error('Error saving email:', err);
-      setError('Something went wrong. Please try again.');
-    } finally {
+    // Simulate API call
+    setTimeout(() => {
       setIsLoading(false);
-    }
+      onSuccess(email);
+    }, 1000);
   };
 
   return (
@@ -77,28 +45,20 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
       )}
       style={{ animationDelay: '400ms' }}
     >
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
         <Input
           type="email"
           placeholder="Enter your email"
-          className="w-full"
+          className="flex-1"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={isLoading}
           required
         />
-        <Input
-          type="text"
-          placeholder="Shopify store URL (optional)"
-          className="w-full"
-          value={shopifyUrl}
-          onChange={(e) => setShopifyUrl(e.target.value)}
-          disabled={isLoading}
-        />
         <Button 
           type="submit" 
           disabled={isLoading}
-          className="w-full bg-[#8C74FF] hover:bg-[#6D56D7] text-white"
+          className="bg-[#8C74FF] hover:bg-[#6D56D7] text-white whitespace-nowrap"
         >
           {isLoading ? 'Processing...' : buttonText}
         </Button>

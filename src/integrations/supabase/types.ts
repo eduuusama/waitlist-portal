@@ -9,30 +9,6 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      "10automations": {
-        Row: {
-          created_at: string
-          document_sent: boolean
-          email: string
-          id: number
-          shopify_url: string | null
-        }
-        Insert: {
-          created_at?: string
-          document_sent?: boolean
-          email: string
-          id?: number
-          shopify_url?: string | null
-        }
-        Update: {
-          created_at?: string
-          document_sent?: boolean
-          email?: string
-          id?: number
-          shopify_url?: string | null
-        }
-        Relationships: []
-      }
       emails: {
         Row: {
           created_at: string

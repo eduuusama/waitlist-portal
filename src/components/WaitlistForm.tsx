@@ -15,6 +15,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
   buttonText = "Join Waitlist" 
 }) => {
   const [email, setEmail] = useState('');
+  const [shopifyUrl, setShopifyUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,10 +32,13 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
     setIsLoading(true);
     
     try {
-      // Insert email into the 10automations table
+      // Insert email and shopify URL into the 10automations table
       const { error: insertError } = await supabase
         .from('10automations')
-        .insert([{ email }]);
+        .insert([{ 
+          email, 
+          shopify_url: shopifyUrl 
+        }]);
       
       if (insertError) {
         console.error('Error saving email:', insertError);
@@ -61,7 +65,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
       )}
       style={{ animationDelay: '400ms' }}
     >
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-col gap-3">
         <Input
           type="email"
           placeholder="Enter your email"
@@ -71,10 +75,20 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
           disabled={isLoading}
           required
         />
+        
+        <Input
+          type="url"
+          placeholder="Your Shopify store URL (optional)"
+          className="flex-1"
+          value={shopifyUrl}
+          onChange={(e) => setShopifyUrl(e.target.value)}
+          disabled={isLoading}
+        />
+        
         <Button 
           type="submit" 
           disabled={isLoading}
-          className="bg-[#8C74FF] hover:bg-[#6D56D7] text-white whitespace-nowrap"
+          className="bg-[#8C74FF] hover:bg-[#6D56D7] text-white w-full"
         >
           {isLoading ? 'Processing...' : buttonText}
         </Button>

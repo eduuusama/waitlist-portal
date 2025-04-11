@@ -33,12 +33,13 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
     setIsLoading(true);
     
     try {
-      // Save the email to Supabase
+      // Save the email to Supabase using the 10automations table
       const { error: supabaseError } = await supabase
-        .from('emails')
+        .from('10automations')
         .insert([{ 
           email, 
-          shopify_url: shopifyUrl || null 
+          shopify_url: shopifyUrl || null,
+          document_sent: false
         }]);
 
       if (supabaseError) {

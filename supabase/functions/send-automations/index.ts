@@ -42,14 +42,14 @@ serve(async (req) => {
     // 2. Connect to an email service API
     // 3. Send the actual automations document attachment
     
-    // Log the action in the database if needed
+    // Log the action in the database - update the 10automations table
     const { error: logError } = await supabase
-      .from('emails')
+      .from('10automations')
       .update({ document_sent: true })
       .eq('email', email);
     
     if (logError) {
-      console.error("Error updating email status:", logError);
+      console.error("Error updating automation document status:", logError);
     }
 
     return new Response(

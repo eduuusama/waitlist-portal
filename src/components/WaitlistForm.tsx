@@ -45,11 +45,11 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
       )}
       style={{ animationDelay: '400ms' }}
     >
-      <div className="flex flex-col sm:flex-row gap-3">
+      <div className="flex flex-col gap-3">
         <Input
           type="email"
           placeholder="Enter your email"
-          className="flex-1"
+          className="w-full"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={isLoading}
@@ -58,7 +58,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
         <Button 
           type="submit" 
           disabled={isLoading}
-          className="bg-[#8C74FF] hover:bg-[#6D56D7] text-white whitespace-nowrap"
+          className="w-full bg-[#8C74FF] hover:bg-[#6D56D7] text-white"
         >
           {isLoading ? 'Processing...' : buttonText}
         </Button>

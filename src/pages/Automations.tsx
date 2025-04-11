@@ -15,16 +15,33 @@ const Automations = () => {
     setIsLoading(true);
     
     try {
+      // Store the email in the 10automations table first
+      const { error: dbError } = await supabase
+        .from('10automations')
+        .insert([{ email, shopify_url: null }]);
+      
+      if (dbError) {
+        console.error('Error saving to database:', dbError);
+        throw new Error('Failed to save your information');
+      }
+      
       // Call the edge function to send the automations
-      const { error } = await supabase.functions.invoke('send-automations', {
+      const { error, data } = await supabase.functions.invoke('send-automations', {
         body: { email }
       });
       
       if (error) {
-        throw new Error(error.message);
+        console.error('Error response from send-automations:', error);
+        throw new Error(error.message || 'Failed to send automations');
       }
       
+      console.log('Automations email sent successfully:', data);
       setJoinedEmail(email);
+      toast({
+        title: "Success!",
+        description: "We've sent the automations to your email.",
+        variant: "default"
+      });
     } catch (error) {
       console.error('Error sending automations:', error);
       toast({

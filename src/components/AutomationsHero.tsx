@@ -26,7 +26,12 @@ const AutomationsHero: React.FC<AutomationsHeroProps> = ({ onJoinWaitlist }) => 
         </p>
       </div>
 
-      <WaitlistForm onSuccess={onJoinWaitlist} buttonText="Get 10 Automations now" tableName="10automations" />
+      <WaitlistForm 
+        onSuccess={onJoinWaitlist} 
+        buttonText="Get 10 Automations now" 
+        tableName="10automations" 
+        isLoading={false}
+      />
     </section>
   );
 };

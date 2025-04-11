@@ -8,13 +8,15 @@ import { supabase } from '../integrations/supabase/client';
 interface WaitlistFormProps {
   onSuccess: (email: string) => void;
   buttonText?: string;
-  tableName?: 'emails' | '10automations'; // New prop to specify which table to use
+  tableName?: 'emails' | '10automations';
+  isLoading?: boolean;
 }
 
 const WaitlistForm: React.FC<WaitlistFormProps> = ({ 
   onSuccess,
   buttonText = "Join Waitlist",
-  tableName = '10automations' // Default to 10automations table
+  tableName = '10automations',
+  isLoading: externalLoading = false
 }) => {
   const [email, setEmail] = useState('');
   const [shopifyUrl, setShopifyUrl] = useState('');
@@ -34,28 +36,13 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
     setIsLoading(true);
     
     try {
-      // Create the data object based on the table
-      const data = tableName === 'emails' 
-        ? { email, shopify_url: shopifyUrl } 
-        : { email, shopify_url: shopifyUrl };
-      
-      // Insert into the specified table
-      const { error: insertError } = await supabase
-        .from(tableName)
-        .insert([data]);
-      
-      if (insertError) {
-        console.error(`Error saving to ${tableName}:`, insertError);
-        setError(`Failed to join the waitlist. Please try again.`);
-        setIsLoading(false);
-        return;
-      }
-      
-      setIsLoading(false);
+      // We'll let the parent component handle the database and email sending
+      // This simplifies this component's responsibility
       onSuccess(email);
     } catch (err) {
       console.error('Error:', err);
       setError('Something went wrong. Please try again.');
+    } finally {
       setIsLoading(false);
     }
   };
@@ -65,7 +52,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
       onSubmit={handleSubmit} 
       className={cn(
         "w-full max-w-md mx-auto mt-6 animate-fade-in",
-        { "animate-pulse": isLoading }
+        { "animate-pulse": isLoading || externalLoading }
       )}
       style={{ animationDelay: '400ms' }}
     >
@@ -76,7 +63,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
           className="flex-1"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          disabled={isLoading}
+          disabled={isLoading || externalLoading}
           required
         />
         
@@ -86,15 +73,15 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
           className="flex-1"
           value={shopifyUrl}
           onChange={(e) => setShopifyUrl(e.target.value)}
-          disabled={isLoading}
+          disabled={isLoading || externalLoading}
         />
         
         <Button 
           type="submit" 
-          disabled={isLoading}
+          disabled={isLoading || externalLoading}
           className="bg-[#8C74FF] hover:bg-[#6D56D7] text-white w-full"
         >
-          {isLoading ? 'Processing...' : buttonText}
+          {isLoading || externalLoading ? 'Processing...' : buttonText}
         </Button>
       </div>
       

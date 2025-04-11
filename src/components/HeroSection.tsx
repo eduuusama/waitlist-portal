@@ -30,7 +30,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onJoinWaitlist }) => {
         </p>
       </div>
 
-      <WaitlistForm onSuccess={onJoinWaitlist} />
+      <WaitlistForm onSuccess={onJoinWaitlist} tableName="emails" />
     </section>
   );
 };

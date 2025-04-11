@@ -8,11 +8,13 @@ import { supabase } from '../integrations/supabase/client';
 interface WaitlistFormProps {
   onSuccess: (email: string) => void;
   buttonText?: string;
+  tableName?: 'emails' | '10automations'; // New prop to specify which table to use
 }
 
 const WaitlistForm: React.FC<WaitlistFormProps> = ({ 
   onSuccess,
-  buttonText = "Join Waitlist" 
+  buttonText = "Join Waitlist",
+  tableName = '10automations' // Default to 10automations table
 }) => {
   const [email, setEmail] = useState('');
   const [shopifyUrl, setShopifyUrl] = useState('');
@@ -32,17 +34,19 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
     setIsLoading(true);
     
     try {
-      // Insert email and shopify URL into the 10automations table
+      // Create the data object based on the table
+      const data = tableName === 'emails' 
+        ? { email, shopify_url: shopifyUrl } 
+        : { email, shopify_url: shopifyUrl };
+      
+      // Insert into the specified table
       const { error: insertError } = await supabase
-        .from('10automations')
-        .insert([{ 
-          email, 
-          shopify_url: shopifyUrl 
-        }]);
+        .from(tableName)
+        .insert([data]);
       
       if (insertError) {
-        console.error('Error saving email:', insertError);
-        setError('Failed to join the waitlist. Please try again.');
+        console.error(`Error saving to ${tableName}:`, insertError);
+        setError(`Failed to join the waitlist. Please try again.`);
         setIsLoading(false);
         return;
       }

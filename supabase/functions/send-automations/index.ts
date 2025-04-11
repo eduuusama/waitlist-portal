@@ -66,54 +66,133 @@ serve(async (req) => {
       subject: '🚀 Your 10 Powerful Shopify Automations',
       html: `
         <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
-          <h1 style="color: #8C74FF; margin-bottom: 20px;">Your Shopify Automations are here!</h1>
+          <h2 style="color: #8C74FF; margin-bottom: 20px;">Your Shopify Automations Guide</h2>
           
-          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">Thank you for requesting our 10 Shopify Automations that can save you 20+ hours every week.</p>
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            By Eduardo Samayoa<br>
+            Co-Founder & CEO, thinkr
+          </p>
           
-          <h2 style="color: #6D56D7; margin-top: 30px; margin-bottom: 15px;">Here are your 10 time-saving automations:</h2>
+          <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+          
+          <h3 style="color: #6D56D7; margin-top: 30px; margin-bottom: 15px;">Introduction</h3>
+          
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            Running 20+ Shopify stores taught me a brutal truth:
+          </p>
+          
+          <blockquote style="border-left: 4px solid #8C74FF; padding-left: 15px; margin: 20px 0; font-style: italic;">
+            "Scaling is not about growing revenue. It's about reducing friction."
+          </blockquote>
+          
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            Time is the enemy of growth. Every hour spent manually fixing a product title, emailing about low inventory, or syncing a promo across channels is an hour not spent building.
+          </p>
+          
+          <p style="margin-bottom: 30px; font-size: 16px; line-height: 1.5;">
+            That's why I built <strong>thinkr</strong> — AI agents for ecommerce operations.
+            This document shares 10 real automations I implemented that saved me over 40 hours a month (and my sanity). These are available today with Thinkr — no coding or Zapier chains required.
+          </p>
+          
+          <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+          
+          <h3 style="color: #6D56D7; margin-top: 30px; margin-bottom: 15px;">10 Automations That Saved My Business</h3>
           
           <ol style="margin-bottom: 30px; padding-left: 20px;">
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Automated Order Tagging</strong> - Tag orders based on specific criteria like order value, shipping destination, or product categories.
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Low Inventory Alerts + Reorder Prompt</strong><br>
+              <em>Problem:</em> Products going out of stock without me knowing.<br>
+              <em>Automation:</em> thinkr monitors stock levels and alerts me before I run out, with 1-click reorder suggestions based on past patterns.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Customer Winback Emails</strong> - Automatically send personalized emails to customers who haven't purchased in a specific timeframe.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Abandoned Cart Action Plan</strong><br>
+              <em>Problem:</em> Missed revenue from unfinished checkouts.<br>
+              <em>Automation:</em> thinkr identifies common abandonment reasons (e.g., slow shipping) and suggests targeted actions — like offering a discount or improving page speed.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Inventory Alert Notifications</strong> - Get alerts when product inventory falls below specific thresholds.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Weekly Sales Summary + Anomaly Detection</strong><br>
+              <em>Problem:</em> Drowning in dashboards.<br>
+              <em>Automation:</em> Every Monday, thinkr sends a summary of key performance shifts — and flags anything unusual (like a sudden drop in a top product).
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Review Request Workflow</strong> - Send automated review requests after customers receive their orders.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Smart Discount Triggers</strong><br>
+              <em>Problem:</em> Random, gut-feeling promotions.<br>
+              <em>Automation:</em> thinkr suggests time-sensitive discounts based on browsing data, conversion rates, and competitor activity.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Abandoned Cart Recovery</strong> - Enhanced multi-step recovery workflows with personalized messaging.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Product Description Optimizer</strong><br>
+              <em>Problem:</em> Weak SEO + copy.<br>
+              <em>Automation:</em> thinkr rewrites top product descriptions based on what's trending in your niche — in your tone.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Product Restock Notifications</strong> - Notify customers when out-of-stock items they're interested in become available.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Customer Winback Campaigns</strong><br>
+              <em>Problem:</em> No time to chase lapsed buyers.<br>
+              <em>Automation:</em> thinkr auto-generates targeted emails to win back customers who haven't bought in 60+ days.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Order Status Updates</strong> - Send automated updates at key points in the fulfillment process.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Bundling Recommendations</strong><br>
+              <em>Problem:</em> Missing upsell opportunities.<br>
+              <em>Automation:</em> thinkr finds which products are often bought together and suggests bundles with optimized pricing.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>VIP Customer Recognition</strong> - Automatically identify and tag high-value customers for special treatment.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Shopify to Email Syncing</strong><br>
+              <em>Problem:</em> Inconsistent updates across platforms.<br>
+              <em>Automation:</em> Push product changes or promotions directly into your email platform — without touching it manually.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Seasonal Campaign Automation</strong> - Schedule and automate marketing campaigns for holidays and seasons.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>Campaign Attribution Insights</strong><br>
+              <em>Problem:</em> Guessing what worked.<br>
+              <em>Automation:</em> thinkr shows which email, ad, or influencer actually drove revenue — with clear attribution suggestions.
             </li>
-            <li style="margin-bottom: 15px; font-size: 16px;">
-              <strong>Cross-sell Recommendations</strong> - Send personalized product recommendations based on purchase history.
+            
+            <li style="margin-bottom: 20px; font-size: 16px;">
+              <strong>1-Click Approval for All Above</strong><br>
+              <em>Problem:</em> Even with insights, I didn't have time to <em>do</em> the work.<br>
+              <em>Automation:</em> thinkr turns each insight into an actionable card I can approve in one click. The agent handles the rest.
             </li>
           </ol>
           
-          <div style="background-color: #f5f3ff; border-left: 4px solid #8C74FF; padding: 15px; margin-bottom: 30px;">
-            <p style="margin: 0; font-size: 16px;">Want help implementing these automations in your Shopify store? Reply to this email and we'll connect you with our automation experts.</p>
-          </div>
+          <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
           
-          <p style="font-size: 16px; margin-bottom: 30px;">Happy automating!</p>
+          <h3 style="color: #6D56D7; margin-top: 30px; margin-bottom: 15px;">Want These Running In Your Store?</h3>
           
-          <div style="border-top: 1px solid #eee; padding-top: 20px; font-size: 14px; color: #777;">
-            <p>If you have any questions, simply reply to this email.</p>
-          </div>
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            thinkr is already powering 100+ stores — helping users like you:
+          </p>
+          
+          <ul style="margin-bottom: 20px; padding-left: 20px;">
+            <li style="margin-bottom: 10px; font-size: 16px;">Save 5–10 hours/week</li>
+            <li style="margin-bottom: 10px; font-size: 16px;">Increase revenue by 15–30%</li>
+            <li style="margin-bottom: 10px; font-size: 16px;">Avoid burnout</li>
+          </ul>
+          
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            You don't need to hire an ops person or build custom automations. Thinkr connects to your Shopify store and starts suggesting improvements in minutes.
+          </p>
+          
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            <strong>Try it free or book a setup call at <a href="https://www.thinkr.pro" style="color: #8C74FF; text-decoration: none;">thinkr.pro</a></strong>
+          </p>
+          
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            Or email me personally — <a href="mailto:eduardo@thinkr.pro" style="color: #8C74FF; text-decoration: none;">eduardo@thinkr.pro</a> — if you want help installing or just want to jam about ecommerce.
+          </p>
+          
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            Let AI do the heavy lifting so you can get back to building.
+          </p>
+          
+          <p style="margin-bottom: 15px; font-size: 16px; line-height: 1.5;">
+            – Eduardo
+          </p>
         </div>
       `,
     });

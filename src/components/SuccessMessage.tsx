@@ -19,7 +19,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ email, onClose, isAutom
         <p className="text-muted-foreground">
           {isAutomationsPage ? (
             <>
-              Thank you for joining. We've sent the 10 Shopify Automations to <span className="font-medium text-foreground">{email}</span>
+              Thank you for joining. We've sent the 10 Shopify Automations to <span className="font-medium text-foreground">{email}</span>. Please check your inbox!
             </>
           ) : (
             <>

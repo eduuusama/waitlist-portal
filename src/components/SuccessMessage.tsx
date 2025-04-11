@@ -5,9 +5,10 @@ import { Check } from 'lucide-react';
 interface SuccessMessageProps {
   email: string;
   onClose: () => void;
+  isAutomationsPage?: boolean;
 }
 
-const SuccessMessage: React.FC<SuccessMessageProps> = ({ email, onClose }) => {
+const SuccessMessage: React.FC<SuccessMessageProps> = ({ email, onClose, isAutomationsPage = false }) => {
   return (
     <div className="glass p-8 max-w-md mx-auto rounded-2xl animate-fade-in">
       <div className="flex flex-col items-center text-center space-y-4">
@@ -16,7 +17,15 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ email, onClose }) => {
         </div>
         <h3 className="text-xl font-medium">You're on the list!</h3>
         <p className="text-muted-foreground">
-          Thank you for joining. We've sent a confirmation to <span className="font-medium text-foreground">{email}</span>
+          {isAutomationsPage ? (
+            <>
+              Thank you for joining. We've sent the 10 Shopify Automations to <span className="font-medium text-foreground">{email}</span>
+            </>
+          ) : (
+            <>
+              Thank you for joining. We've sent a confirmation to <span className="font-medium text-foreground">{email}</span>
+            </>
+          )}
         </p>
         <button 
           onClick={onClose}

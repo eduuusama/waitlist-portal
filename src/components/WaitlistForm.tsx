@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { cn } from '../lib/utils';
+import { supabase } from '../integrations/supabase/client';
+import { toast } from './ui/use-toast';
 
 interface WaitlistFormProps {
   onSuccess: (email: string) => void;
@@ -14,6 +16,7 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
   buttonText = "Join Waitlist" 
 }) => {
   const [email, setEmail] = useState('');
+  const [shopifyUrl, setShopifyUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,11 +32,39 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
     setError(null);
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      // Save the email to Supabase
+      const { error: supabaseError } = await supabase
+        .from('emails')
+        .insert([{ 
+          email, 
+          shopify_url: shopifyUrl || null 
+        }]);
+
+      if (supabaseError) {
+        // If it's a unique violation, that means the email already exists
+        if (supabaseError.code === '23505') {
+          // This is okay - they're just submitting again
+          console.log('Email already exists, continuing with success flow');
+        } else {
+          throw supabaseError;
+        }
+      }
+
+      // Show success toast
+      toast({
+        title: "Success!",
+        description: "Your automations are on the way to your inbox!",
+      });
+
+      // Call the success handler
       onSuccess(email);
-    }, 1000);
+    } catch (err) {
+      console.error('Error saving email:', err);
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -54,6 +85,14 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
           onChange={(e) => setEmail(e.target.value)}
           disabled={isLoading}
           required
+        />
+        <Input
+          type="text"
+          placeholder="Shopify store URL (optional)"
+          className="w-full"
+          value={shopifyUrl}
+          onChange={(e) => setShopifyUrl(e.target.value)}
+          disabled={isLoading}
         />
         <Button 
           type="submit" 

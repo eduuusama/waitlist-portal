@@ -5,9 +5,10 @@ import PartnerLogos from './PartnerLogos';
 
 interface AutomationsHeroProps {
   onJoinWaitlist: (email: string) => void;
+  isLoading?: boolean;
 }
 
-const AutomationsHero: React.FC<AutomationsHeroProps> = ({ onJoinWaitlist }) => {
+const AutomationsHero: React.FC<AutomationsHeroProps> = ({ onJoinWaitlist, isLoading = false }) => {
   return (
     <section className="pt-10 pb-20 px-4 max-w-4xl mx-auto flex flex-col items-center">
       <div className="w-full animate-fade-in" style={{ animationDelay: '100ms' }}>
@@ -30,7 +31,7 @@ const AutomationsHero: React.FC<AutomationsHeroProps> = ({ onJoinWaitlist }) => 
         onSuccess={onJoinWaitlist} 
         buttonText="Get 10 Automations now" 
         tableName="10automations" 
-        isLoading={false}
+        isLoading={isLoading}
       />
     </section>
   );

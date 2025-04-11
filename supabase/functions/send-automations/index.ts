@@ -41,19 +41,16 @@ serve(async (req) => {
       .from("10automations")
       .select("*")
       .eq("email", email)
-      .single();
+      .maybeSingle();
 
-    if (userError && userError.code !== 'PGRST116') {
-      console.error("Error fetching user:", userError);
-      
+    // Check if we need to create a user record
+    if (!userData) {
       // If user doesn't exist, create a new record
-      const { data: newUser, error: insertError } = await supabase
+      const { error: insertError } = await supabase
         .from("10automations")
-        .insert([{ email, shopify_url: null }])
-        .select()
-        .single();
+        .insert([{ email, shopify_url: null }]);
         
-      if (insertError) {
+      if (insertError && insertError.code !== '23505') { // Ignore duplicate key errors
         console.error("Error creating user record:", insertError);
         return new Response(
           JSON.stringify({ error: "Failed to create user record" }),

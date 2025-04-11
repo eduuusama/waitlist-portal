@@ -15,14 +15,23 @@ const Automations = () => {
     setIsLoading(true);
     
     try {
-      // Store the email in the 10automations table first
-      const { error: dbError } = await supabase
+      // Check if the email already exists in the database
+      const { data: existingUser } = await supabase
         .from('10automations')
-        .insert([{ email, shopify_url: null }]);
+        .select('*')
+        .eq('email', email)
+        .single();
       
-      if (dbError) {
-        console.error('Error saving to database:', dbError);
-        throw new Error('Failed to save your information');
+      // If email doesn't exist, insert it
+      if (!existingUser) {
+        const { error: dbError } = await supabase
+          .from('10automations')
+          .insert([{ email, shopify_url: null }]);
+        
+        if (dbError && dbError.code !== '23505') { // Ignore duplicate key errors
+          console.error('Error saving to database:', dbError);
+          throw new Error('Failed to save your information');
+        }
       }
       
       // Call the edge function to send the automations
@@ -75,7 +84,7 @@ const Automations = () => {
         {joinedEmail ? (
           <SuccessMessage email={joinedEmail} onClose={handleClose} isAutomationsPage={true} />
         ) : (
-          <AutomationsHero onJoinWaitlist={handleJoinWaitlist} />
+          <AutomationsHero onJoinWaitlist={handleJoinWaitlist} isLoading={isLoading} />
         )}
       </main>
     </div>

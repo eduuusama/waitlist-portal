@@ -22,9 +22,6 @@ const AutomationsHero: React.FC<AutomationsHeroProps> = ({ onJoinWaitlist, isLoa
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-balance animate-fade-in text-muted-foreground" style={{ animationDelay: '250ms' }}>
           Save 20+ Hours Every Week
         </h2>
-        <p className="text-xl text-foreground max-w-2xl mx-auto text-balance animate-fade-in" style={{ animationDelay: '300ms' }}>
-          Receive 10 time-saving automations that have helped merchants like you reclaim their time.
-        </p>
       </div>
 
       <WaitlistForm 

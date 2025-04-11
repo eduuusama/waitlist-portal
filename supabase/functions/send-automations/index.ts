@@ -97,6 +97,8 @@ serve(async (req) => {
               <p style="margin-bottom: 16px; font-size: 15px; line-height: 1.6;">This document shares 10 real automations I implemented that saved me over 40 hours a month (and my sanity).</p>
               <p style="margin-bottom: 16px; font-size: 15px; line-height: 1.6;">These are available today with thinkr — no coding or Zapier chains required.</p>
               
+              <a href="https://apps.shopify.com/thinkr" style="display: inline-block; background-color: #8C74FF; color: white; font-weight: 600; text-decoration: none; padding: 12px 24px; border-radius: 6px; margin: 16px 0 24px; font-size: 16px; text-align: center;">Download thinkr shopit app</a>
+              
               <p style="margin-bottom: 16px; font-size: 15px; line-height: 1.6;">Let's get into it.</p>
             </div>
             

@@ -17,7 +17,7 @@ const AutomationsHero: React.FC<AutomationsHeroProps> = ({ onJoinWaitlist, isLoa
 
       <div className="text-center space-y-6 my-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-balance animate-fade-in" style={{ animationDelay: '200ms', whiteSpace: 'nowrap' }}>
-          Get 10 Powerful Shopify Automations
+          10 Powerful Shopify Automations
         </h1>
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight text-balance animate-fade-in text-muted-foreground" style={{ animationDelay: '250ms' }}>
           Save 20+ Hours Every Week

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { cn } from '../lib/utils';
+import { supabase } from '../integrations/supabase/client';
 
 interface WaitlistFormProps {
   onSuccess: (email: string) => void;
@@ -29,11 +30,26 @@ const WaitlistForm: React.FC<WaitlistFormProps> = ({
     setError(null);
     setIsLoading(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Insert email into the 10automations table
+      const { error: insertError } = await supabase
+        .from('10automations')
+        .insert([{ email }]);
+      
+      if (insertError) {
+        console.error('Error saving email:', insertError);
+        setError('Failed to join the waitlist. Please try again.');
+        setIsLoading(false);
+        return;
+      }
+      
       setIsLoading(false);
       onSuccess(email);
-    }, 1000);
+    } catch (err) {
+      console.error('Error:', err);
+      setError('Something went wrong. Please try again.');
+      setIsLoading(false);
+    }
   };
 
   return (

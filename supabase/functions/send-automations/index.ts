@@ -79,7 +79,7 @@ serve(async (req) => {
             <p style="margin-bottom: 16px; font-size: 15px; line-height: 1.6;">Running 20+ Shopify stores taught me a brutal truth:</p>
             
             <blockquote style="border-left: 3px solid #8C74FF; padding-left: 16px; margin: 24px 0; font-style: italic; color: #555;">
-              "Scaling is not about growing revenue. It's about reducing friction."
+              "True sustainable scaling is about reducing friction."
             </blockquote>
             
             <p style="margin-bottom: 16px; font-size: 15px; line-height: 1.6;"><strong>Time is the enemy of growth.</strong></p>
